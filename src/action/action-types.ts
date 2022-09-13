@@ -1,7 +1,9 @@
 import { AxiosResponse } from "axios";
 
 export const LOGIN_ACTION_TYPE = {
-    LOGIN: 'LOGIN',
+    LOGIN_PENDING: 'LOGIN_PENDING',
+    LOGIN_SUCCESS: 'LOGIN_FULFILLED',
+    LOGIN_REJECTED: 'LOGIN_REJECTED',
 }
 export const POST_ACTION_TYPE = {
     GET_POSTS: 'GET_POSTS',
@@ -9,8 +11,19 @@ export const POST_ACTION_TYPE = {
 
 export interface IAction {
     type: string;
-    payload?: AxiosResponse
+    payload?: any
 }
-export const REQUEST = (actionType: string) => actionType + '_PENDING';
-export const SUCCESS = (actionType: string) => actionType + '_FULFILLED';
-export const FAILED = (actionType: string) => actionType + '_REJECTED';
+
+export const REQUEST = (actionType: string) => `${actionType}_PENDING`;
+
+/**
+ * Appends SUCCESS async action type
+ */
+
+export const SUCCESS = (actionType: string) => `${actionType}_FULFILLED`;
+
+/**
+ * Appends FAILURE async action type
+ */
+
+export const FAILURE = (actionType: string) => `${actionType}_REJECTED`;

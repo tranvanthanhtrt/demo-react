@@ -6,7 +6,7 @@ import { ReactComponent as IconAdd } from '../assets/icons/icon-add.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { IRootState, useAppDispatch } from '../store';
 import { getAllPostsAction } from '../action/posts';
-import type { } from 'redux-thunk/extend-redux';
+// import type { } from 'redux-thunk/extend-redux';
 
 const dataFolders = [
     {
@@ -185,10 +185,11 @@ const FolderManager = () => {
     }, [])
 
     useEffect(() => {
-        if (!postsData) {
+        if (!postsData.length) {
             dispatch(getAllPostsAction());
         }
-    }, []);
+        console.log('postsData-thanh', postsData);
+    }, [postsData]);
 
     return (
         <>

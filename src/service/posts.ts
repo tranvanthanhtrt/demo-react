@@ -12,10 +12,10 @@ export const getAllPosts = async () => {
                 },
             }
         );
-        console.log(res.data.posts);
-        return res.data;
+        console.log('res.data.posts', res.data.posts);
+        return res.data?.posts;
 
     } catch (error) {
-        return null;
+        return [];
     }
 }
